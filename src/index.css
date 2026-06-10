@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  /* Silicon & Signal palette */
+  --color-bg: #0a0e12;
+  --color-bg2: #11161c;
+  --color-card: #151b23;
+  --color-edge: #1f2937;
+  --color-signal: #22d3ee; /* electric cyan — traces, links, highlights */
+  --color-solder: #f59e0b; /* solder amber — CTAs, hovers, sparingly */
+  --color-ink: #e6edf3;
+  --color-mute: #8b97a4;
+
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg2) 100%);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* silkscreen-style section eyebrow */
+.silkscreen {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: var(--color-signal);
+}
+
+/* cyan → amber gradient headline (use sparingly) */
+.gradient-text {
+  background: linear-gradient(92deg, #22d3ee 10%, #67e8f9 45%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* faint solder-mask dot grid for section backdrops */
+.dotgrid {
+  background-image: radial-gradient(rgba(139, 151, 164, 0.1) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+/* typewriter caret */
+.caret::after {
+  content: "▍";
+  color: var(--color-signal);
+  animation: blink 1.05s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .caret::after { animation: none; }
+}
+
+/* card hover glow */
+.glow-card {
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+.glow-card:hover {
+  border-color: rgba(34, 211, 238, 0.45);
+  box-shadow: 0 0 28px -8px rgba(34, 211, 238, 0.35),
+    inset 0 0 18px -12px rgba(34, 211, 238, 0.25);
+}
