@@ -41,12 +41,4 @@ export const PROJECTS = [
     link: LINKS.github,
     linkLabel: "GitHub →",
   },
-  {
-    title: "Health Query Chatbot",
-    metric: "LLaMA 3.1 8B via Groq",
-    desc: "Healthcare-domain conversational prototype combining Groq inference with HuggingFace tooling.",
-    tags: ["LLaMA 3.1", "Groq", "HuggingFace"],
-    link: LINKS.github,
-    linkLabel: "GitHub →",
-  },
 ];
