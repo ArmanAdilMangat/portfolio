@@ -1,0 +1,26 @@
+name: Keep ARIA awake
+
+# Free HuggingFace Spaces go to sleep after a period without traffic, and a
+# cold start of the Flask + RAG index makes the first visitor's chat time out.
+# A light GET on /health every 6 hours keeps the Space running.
+
+on:
+  schedule:
+    - cron: "41 */6 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping /health (allows up to ~5 min for a cold start)
+        run: |
+          for i in 1 2 3 4 5 6 7 8 9 10; do
+            if out=$(curl -fsS --max-time 30 https://armanxai-aria-chatbot.hf.space/health); then
+              echo "$out"; exit 0
+            fi
+            echo "attempt $i: not ready, retrying in 30 s"; sleep 30
+          done
+          echo "ARIA did not answer /health"; exit 1
