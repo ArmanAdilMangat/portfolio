@@ -1,13 +1,13 @@
 const STAGES = [
-  ["INMP441 ×2", "stereo mics"],
-  ["ESP32-S3", "I2S capture"],
-  ["WiFi", "WAV POST"],
-  ["Flask", "server"],
-  ["Whisper", "STT"],
-  ["Mistral 7B", "Ollama"],
-  ["pyttsx3", "TTS"],
-  ["ESP32-S3", "I2S out"],
-  ["Speaker", "MAX98357A"],
+  ["Mic node", "2× INMP441"],
+  ["Wi-Fi TCP", "stereo PCM"],
+  ["Hey Genie", "openWakeWord"],
+  ["Whisper", "faster-whisper"],
+  ["AIML", "362 patterns"],
+  ["Mistral 7B", "fallback"],
+  ["Piper", "TTS"],
+  ["Wi-Fi TCP", "PCM"],
+  ["Speaker node", "MAX98357A"],
 ];
 
 const W = 1180;
@@ -21,7 +21,7 @@ export default function GenieDiagram() {
       viewBox={`0 0 ${W} 110`}
       className="w-full"
       role="img"
-      aria-label="GENIE pipeline: mics to ESP32-S3 to WiFi to Flask to Whisper to Mistral 7B to pyttsx3 back to ESP32-S3 and speaker"
+      aria-label="GENIE voice path: mic node to laptop over Wi-Fi, wake word, Faster-Whisper, AIML router with Mistral 7B fallback, Piper TTS, back to the speaker node"
     >
       {STAGES.map(([name, sub], i) => {
         const x = i * (BOX_W + GAP);

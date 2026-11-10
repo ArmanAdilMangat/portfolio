@@ -5,7 +5,7 @@ const ITEMS = [
     when: "Mar 2026 — Apr 2026",
     title: "AI/ML Engineering Intern (Advanced Track)",
     org: "DevelopersHub Corporation · remote",
-    desc: "Selected for the advanced phase. Delivered three production-grade projects: BERT AG-News fine-tune (94.74%), IBM Telco churn pipeline, and an LLM support-ticket auto-tagger (99.82%).",
+    desc: "Selected for the advanced phase. Delivered three production-grade projects: BERT AG-News fine-tune (94.74%), IBM Telco churn pipeline, and a support-ticket auto-tagger (DistilBERT, 99.82%).",
   },
   {
     when: "2024 — Present",
@@ -17,7 +17,7 @@ const ITEMS = [
     when: "2022 — 2026",
     title: "BS Artificial Intelligence",
     org: "University of Management and Technology (UMT), Lahore",
-    desc: "Final year. Coursework: Deep Learning, Computer Vision, NLP, Parallel & Distributed Computing, Information Security, Data Mining. FYP: GENIE.",
+    desc: "Graduated 2026. Coursework: Deep Learning, Computer Vision, NLP, Parallel & Distributed Computing, Information Security, Data Mining. FYP: GENIE.",
   },
 ];
 

@@ -4,13 +4,14 @@ import useCountUp from "../hooks/useCountUp.js";
 
 const GAUGES = [
   { value: 94.74, label: "BERT — AG News", sub: "Fine-tuned news classification" },
-  { value: 99.03, label: "CNN-LSTM IDS", sub: "CICIDS-2017 intrusion detection" },
-  { value: 99.82, label: "LLM auto-tagger", sub: "Support-ticket classification" },
+  { value: 99.82, label: "DistilBERT tagger", sub: "Support tickets · 11 classes" },
+  { value: 99.93, label: "Random Forest IDS", sub: "CICIDS-2017 · beat the deep models" },
 ];
 
 const BARS = [
-  { label: "Baseline MLP / CNN", rel: 1, note: "5× training time", color: "#8B97A4" },
-  { label: "CNN-LSTM + NSGA-II (mine)", rel: 0.2, note: "1×", color: "#22D3EE" },
+  { label: "Zero-shot · BART-MNLI", rel: 0.473, note: "47.3%", color: "#8B97A4" },
+  { label: "Few-shot · SetFit, 8 per class", rel: 0.982, note: "98.2%", color: "#8B97A4" },
+  { label: "Fine-tuned · DistilBERT", rel: 0.9982, note: "99.82%", color: "#22D3EE" },
 ];
 
 function Gauge({ g, i }) {
@@ -67,7 +68,7 @@ export default function Benchmarks() {
         <FadeIn>
           <div className="mt-6 p-6 rounded-lg border border-edge bg-card glow-card">
             <div className="font-mono text-sm text-solder">
-              IDS research — relative training time (lower is better)
+              Support-ticket tagger — top-1 accuracy on 550 held-out tickets
             </div>
             <div className="mt-4 space-y-4">
               {BARS.map((b) => (
@@ -94,7 +95,7 @@ export default function Benchmarks() {
               ))}
             </div>
             <p className="font-mono text-xs text-mute mt-4">
-              NSGA-II Jumping-Gene feature selection cut training time ~5× vs MLP/CNN baselines at 99.03% accuracy.
+              Eight labelled examples per class closed most of the gap; full fine-tuning added the last 1.6 points.
             </p>
           </div>
         </FadeIn>

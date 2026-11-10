@@ -1,5 +1,6 @@
 import GenieDiagram from "./GenieDiagram.jsx";
 import FadeIn from "./FadeIn.jsx";
+import { LINKS } from "../data/metrics.js";
 
 const PROBLEMS = [
   { title: "Ghost-voice distortion", fix: "Eliminated robotic doubled audio by resampling 22050 Hz → 16 kHz with audioop.ratecv() before playback." },
@@ -10,8 +11,8 @@ const PROBLEMS = [
 
 const PHASES = [
   { tag: "T+1 · PHASE 1", status: "SHIPPED", color: "text-signal", d: "16/16 user stories delivered · 10/10 critical bugs resolved." },
-  { tag: "T+2 · PHASE 2", status: "IN PROGRESS", color: "text-solder", d: "ESP-NOW ✓ · stereo mics ✓ · soldered PCB ✓ · Whisper small ✓ · IoT control ✓ — remaining: wake-word, dashboard, battery." },
-  { tag: "T+3 · PHASE 3", status: "PLANNED", color: "text-mute", d: "On-device AI inference · multi-language support." },
+  { tag: "T+2 · PHASE 2", status: "SHIPPED", color: "text-signal", d: "Six-node system · \"Hey Genie\" wake word · Faster-Whisper + AIML + Mistral-7B fallback + Piper · on-device handling classifier · laser-cut enclosure. Released as v2.0.0, Sep 2026." },
+  { tag: "T+3 · PHASE 3", status: "PLANNED", color: "text-mute", d: "Multi-language support · sign-in web dashboard · battery power." },
 ];
 
 export default function GenieSection() {
@@ -26,11 +27,12 @@ export default function GenieSection() {
           </h2>
           <p className="mt-5 text-mute max-w-3xl leading-relaxed">
             GENIE (Generate, Engage, Navigate Intelligent Environments) is a{" "}
-            <span className="text-ink">fully offline</span> voice AI assistant: Whisper,
-            Mistral 7B and pyttsx3 running entirely on local hardware — zero cloud, zero
-            API keys, zero subscriptions. Built for physically impaired users and
-            IoT-driven smart environments on <span className="text-ink">~$22 of hardware</span>.
-            Final Year Project at UMT Lahore; I lead the 4-person team as Lead Developer / Hardware.
+            <span className="text-ink">fully offline</span> voice assistant and home-safety
+            monitor built from <span className="text-ink">six ESP32-S3 nodes and one laptop</span>.
+            Wake word, speech recognition, intent routing and speech synthesis all run locally;
+            gas, flame and fall are confirmed on the microcontroller and never pass through the
+            language model. Built for physically impaired users. Final Year Project at UMT Lahore;
+            I led the 4-person team as Lead Developer — sensor nodes, firmware, display driver and enclosure.
           </p>
         </FadeIn>
 
@@ -38,8 +40,11 @@ export default function GenieSection() {
           <div className="mt-10 p-5 rounded-lg border border-edge bg-card overflow-x-auto glow-card">
             <GenieDiagram />
             <p className="font-mono text-xs text-mute mt-3">
-              End-to-end latency: 8–15s · ESP-NOW peer-to-peer between boards · custom soldered PCB with 100µF decoupling
+              Voice loop 8–15 s end-to-end · safety path 50–150 ms for flame and fall · 232-parameter classifier running on the face board
             </p>
+            <a href={LINKS.genieRepo} target="_blank" rel="noreferrer" className="inline-block mt-4 px-4 py-2 rounded bg-signal text-bg text-sm font-medium hover:opacity-90 transition-opacity">
+              View the code on GitHub →
+            </a>
           </div>
         </FadeIn>
 
